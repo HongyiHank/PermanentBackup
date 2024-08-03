@@ -1,44 +1,70 @@
-PermanentBackup
+HH Permanent Backup
 -----
+## HH版說明
 
-一个用于创建完整备份的 
-[MCDReforged](https://github.com/Fallen-Breath/MCDReforged) 插件。备份的存档将会被打包成 `.zip` 格式
+前陣子修改了雲鎮工藝的 [TimeBackup](https://github.com/HongyiHank/TimeBackup) 插件
 
-与 [QuickBackupM](https://github.com/TISUnion/QuickBackupM) 类似，PermanentBackup 可以指定备份的世界文件夹，也可以修改所需的权限等级
+後來發現它備份的時間有點長、體積有點大，我也用不太到自動備份，所以就找了一個新的插件 [PermanentBackup](https://github.com/TISUnion/PermanentBackup)
 
-备份的存档将会存放至 perma_backup 文件夹中
+使用後我覺得還是有一些不足的地方，所以我還修改和新增了以下功能
 
-## 命令格式说明
+1.增加進度條-代碼參考 [TimeBackup](https://github.com/HongyiHank/TimeBackup)
 
-`!!backup` 显示帮助信息
+2.備份完成後顯示檔案大小-代碼參考 [TimeBackup](https://github.com/HongyiHank/TimeBackup)
 
-`!!backup make [<comment>]` 创建一个备份，comment 为可选备注信息
+3.增加別名(!!bk)功能-代碼參考 [Command Aliases](https://mcdreforged.com/zh-CN/plugin/command_aliases)
 
-`!!backup list` 显示最近的十个备份的信息
+4.刪除(!!backup del)功能-靈感來源 [Prime Backup](https://mcdreforged.com/zh-CN/plugin/prime_backup)
 
-`!!backup listall` 显示所有备份的信息
+5.列出備份時顯示刪除按鈕-代碼參考 [Where Is](https://mcdreforged.com/zh-CN/plugin/where_is) 
+
+6.繁體中文化
+
+## Fallen版(原版)說明
+
+一個用於創建完整備份的 [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) 插件。備份的存檔將會被打包成 `.zip` 格式
+
+與 [QuickBackupM](https://github.com/TISUnion/QuickBackupM) 類似，PermanentBackup 可以指定備份的世界文件夾，也可以修改所需的權限等級
+
+備份的存檔將會存放至 perma_backup 文件夾中
+
+## 指令格式說明
+
+`!!backup` 顯示幫助資訊
+
+`!!backup make [<comment>]` 創建一個備份，comment 為可選備註資訊
+
+`!!backup list` 顯示最近的十個備份的資訊
+
+`!!backup listall` 顯示所有備份的資訊
+
+`!!backup del [<backup_number>]` 刪除指定序列號的備份
 
 ## 配置文件
 
-配置文件为 `config/PermanentBackup.json`
+配置文件為 `config/PermanentBackup.json`
 
-具体修改方式类似 [QuickBackupM](https://github.com/TISUnion/QuickBackupM)
+具體修改方式類似 [QuickBackupM](https://github.com/TISUnion/QuickBackupM)
 
-默认配置文件：
+默認配置文件：
 
 ```json5
 {
-    "turn_off_auto_save": true,   // 备份时是否关闭 autosave
-    "ignore_session_lock": true,  // 是否忽略session.lock
-    "backup_path": "./perma_backup",  // 备份文件夹路径
-    "server_path": "./server",  //  服务端所在路径
-    "world_names": [  // 存档文件名列表。bukkit系服务端使用多个文件夹储存不同的维度
+    "turn_off_auto_save": true,
+    "ignore_session_lock": true,
+    "backup_path": "./perma_backup",
+    "server_path": "./server",
+    "world_names": [
         "world"
     ],
-    "minimum_permission_level": {  // 指令权限需求
+    "minimum_permission_level": {
         "make": 2,
         "list": 0,
-        "listall": 2
+        "listall": 2,
+        "del": 3
+    },
+    "alias": {
+        "!!bk": "!!backup"
     }
 }
 ```

@@ -1,15 +1,16 @@
 {
 	"id": "permanent_backup",
 	"version": "1.0.3",
-	"name": "Permanent Backup",
+	"name": "HH Permanent Backup",
 	"description": {
 		"en_us": "A plugin for creating permanent zip world backups",
-		"zh_cn": "创建永久的用 zip 压缩的备份"
+		"zh_cn": "創建永久的用 zip 壓縮的備份"
 	},
 	"author": [
-		"Fallen_Breath"
+		"Fallen_Breath",
+		"HongyiHank"
 	],
-	"link": "https://github.com/MCDReforged/PermanentBackup",
+	"link": "https://github.com/HongyiHank/PermanentBackup",
 	"dependencies": {
 		"mcdreforged": ">=2.0.0-"
 	},
